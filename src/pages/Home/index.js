@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { MdFlightTakeoff } from 'react-icons/md'
 
 import api from '../../services/api'
 import './style.css'
 
 const Home = () => {
+  const dipatch = useDispatch();
   const [trips, setTrips] = useState([]);
   
   useEffect(() => {
@@ -17,6 +19,13 @@ const Home = () => {
     loadApi();
   }, [])
 
+  function handleAdd(trip){
+    dipatch({
+      type: 'ADD_RESERVE',
+      trip,
+    });
+  }
+
   return (
     <div>
       <div className="box">
@@ -28,7 +37,7 @@ const Home = () => {
 
             <button
             type='button'
-            onClick={() => {}}
+            onClick={() => handleAdd(trip)}
             >
               <div>
                 <MdFlightTakeoff size={16} color='#fff'/>
