@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/logo.svg'
 import './style.css'
-import reserve from '../../store/modules/reserve/reducer';
 
 const Header = () => {
   const reserveSize = useSelector(state => state.reserve.length)
